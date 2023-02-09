@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<h2>
+	How can I help?
+	@if (isBuilder)
+	{
+		<span> - Builder</span>
+	}
+</h2>
+<div class="form-check form-switch">
+	<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" @bind-value=@isBuilder />
+	<label class="form-check-label" for="flexSwitchCheckChecked">Switch to Builder</label>
+</div>
+<EditForm Model=@searchModel OnSubmit=@Execute>
+	<InputTextArea class="form-control" @bind-Value=searchModel.Prompt rows="20" disabled=@isExecuting />
+
+	<button class="btn btn-primary mt-3" type="submit" disabled=@isExecuting>Go</button>
+
+	@if (isExecuting)
+	{
+		<span>Loading...</span>
+	}
+</EditForm>
+
+@if (isBuilder)
+{
+	<p class="mt-5">Below you can navigate to your newly generated website. However, give it a couple of minutes before accessing it, as it might still be deploying.</p>
+    <a href=@newWebsiteUrl target="_blank">👉 Your new website</a>
+}
