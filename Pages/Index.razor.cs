@@ -24,6 +24,7 @@ namespace CodeBuddy.Pages
 			if (string.IsNullOrEmpty(searchModel.Prompt))
 			{
 				searchModel.Prompt = "Please ask a question, i.e: write a simple record in c# called Person";
+				return;
 			}
 
 			isExecuting = true;
